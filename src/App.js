@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Redirect, Route, Switch } from "react-router-dom";
+import pages from "./helpers/pages";
+import Navbar from "./components/Navbar";
+import Offline from "./components/Offline";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {navigator.onLine ? (
+        <div className="container-lg mt-4">
+          <Switch>
+            {pages.map((item, indx) => (
+              <Route
+                path={item.pageLink}
+                exact
+                component={item.component}
+                key={indx}
+              />
+            ))}
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      ) : (
+        <Offline />
+      )}
     </div>
   );
-}
+};
 
 export default App;
