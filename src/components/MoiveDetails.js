@@ -44,7 +44,7 @@ const MoiveDetails = ({ match }) => {
                 ))}
               </select>
             </div>
-            <div className="m-2">
+            <div className="m-2 mt-5">
               <Link
                 to={`/theatres/${city}/${movieId}/${
                   lang === "" ? data.languages[0] : lang
@@ -94,7 +94,7 @@ const MovieBanner = ({ data }) => {
           ))}
         </div>
       </div>
-      <div className="mx-auto">
+      <div className="d-flex justify-content-center align-items-center">
         <MoviePosterCard {...data} />
       </div>
     </div>
