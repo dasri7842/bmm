@@ -1,5 +1,12 @@
 .poster {
   width: 16rem;
+  height: 26rem;
+}
+
+.poster > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .poster:hover > .poster-details {
