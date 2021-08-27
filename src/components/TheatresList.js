@@ -51,14 +51,14 @@ const FutureDates = () => {
       {dates.map((item, indx) => (
         <a
           href={`/theatres/${city}/${movieId}/${language}/${moment(item).format(
-            "DD-MM-YY"
+            "YYYY-MM-DD"
           )}`}
           key={indx}
         >
           <button
             type="button"
             className={`btn mx-1 ${
-              show_date === moment(item).format("DD-MM-YY")
+              show_date === moment(item).format("YYYY-MM-DD")
                 ? "btn-danger"
                 : "btn-outline-secondary"
             }  `}
@@ -73,26 +73,30 @@ const FutureDates = () => {
   );
 };
 
-const TheaterShows = (data) => {
+const TheaterShows = ({ shows, theatre }) => {
   return (
     <div className="p-2 my-2 border-top round row align-item-center">
       <div className="col-lg-4">
         <h5>
-          {data.name} - {data.price}₹
+          {theatre.name} - {theatre.screen_name}
         </h5>
         <span>
-          {data.street} - {data.city}
+          {theatre.street} - {theatre.city}
         </span>
       </div>
       <div className="col-lg-8 my-auto">
         <div className="d-flex justify-content-around align-item-center">
-          {data.show_time.map((time, indx) => (
+          {shows.map((item, indx) => (
             <Link
-              to={`/bookseats/${data.theatre_id}/${data.screen_id}/${time}/${data.price}`}
+              to={`/bookseats/${theatre.theatre_id}/${theatre.screen_name}/${
+                item.show_date + "T" + item.show_time
+              }/${item.price}/${item.id}`}
               key={indx}
             >
               <button type="button" className="btn btn-outline-success m-1">
-                {moment(time).format("hh:mm A")}
+                {`${item.price} ₹ ${moment(
+                  "2015-06-17T" + item.show_time
+                ).format("hh:mm A")}`}
               </button>
             </Link>
           ))}

@@ -23,7 +23,7 @@ const pages = [
   },
   {
     displayName: "Seat Map",
-    pageLink: "/bookseats/:theatre_id/:screen_id/:show_time/:price",
+    pageLink: "/bookseats/:theatre_id/:screen_id/:show_time/:price/:show_id",
     component: SeatMap,
   },
   {

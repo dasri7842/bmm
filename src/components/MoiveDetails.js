@@ -48,7 +48,7 @@ const MoiveDetails = ({ match }) => {
               <Link
                 to={`/theatres/${city}/${movieId}/${
                   lang === "" ? data.languages[0] : lang
-                }/${moment().format("DD-MM-YY")}`}
+                }/${moment().format("YYYY-MM-DD")}`}
                 className="text-decoration-none text-dark mb-3"
               >
                 <button type="button" className="btn btn-outline-secondary">

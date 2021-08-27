@@ -20,6 +20,8 @@ const PayAmount = ({ location }) => {
 
   const { seats, price } = location.state;
 
+  console.log(location.state);
+
   const hanldeSubmit = (e) => {
     e.preventDefault();
     Setreq({ ...req, loading: true, errMsg: "" });
@@ -29,7 +31,8 @@ const PayAmount = ({ location }) => {
       .catch((err) =>
         Setreq({
           loading: false,
-          errMsg: "Something Went Wrong",
+          errMsg:
+            "Selected Tickets are booked by some one else or Something Went Wrong!",
           success: false,
         })
       );
@@ -95,8 +98,9 @@ const SuccessScreen = () => {
 };
 
 function validateEmail(email) {
-  // eslint-disable-next-line
-  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    // eslint-disable-next-line
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
 

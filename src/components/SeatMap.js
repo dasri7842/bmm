@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const SeatMap = ({ match }) => {
-  const { theatre_id, screen_id, show_time, price } = match.params;
+  const { theatre_id, screen_id, show_time, price, show_id } = match.params;
   const [seatsSelected, SetSeatsSelected] = useState([]);
 
   const handleSelectSeat = (seatId) => {
@@ -21,14 +21,8 @@ const SeatMap = ({ match }) => {
     }
   };
 
-  const params = {
-    show_date: moment(Number(show_time)).format("YYYY-MM-DD"),
-    show_time: moment(Number(show_time)).format("YYYY-MM-DD:HH:mm:ss"),
-  };
-
   const { data, loading, errMsg } = useGetData(
-    apiUrls.bookedSeats(theatre_id, screen_id),
-    params
+    apiUrls.bookedSeats(theatre_id, show_id)
   );
 
   useDocumentTitle("Seat Map");
@@ -44,14 +38,14 @@ const SeatMap = ({ match }) => {
         <div>
           <div className="row d-flex justify-content-start mx-5 align-items-center my-3">
             <p className="col-4 text-muted mx-5 ps-5">
-              {moment(Number(show_time)).calendar()}
+              {moment(show_time).calendar()}
             </p>
             <Link
               className="col-6"
               to={{
                 pathname: "/payamount",
                 state: {
-                  ...params,
+                  show_id,
                   seats: seatsSelected,
                   theatre_id,
                   screen_id,
