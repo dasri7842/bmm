@@ -3,7 +3,7 @@ const SeatsDisplay = ({ data, handleSelectSeat, seatsSelected }) => {
   const cols = [];
   for (let seatid = 1; seatid <= 15; seatid++) cols.push(seatid);
   return (
-    <div className="my-1">
+    <div className="my-1 seat-display">
       {rows.map((rowID, indx) => {
         return (
           <div className={`row ${rowID === "B" ? "mb-5" : ""}`} key={indx}>

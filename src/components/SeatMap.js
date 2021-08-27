@@ -36,12 +36,12 @@ const SeatMap = ({ match }) => {
         </div>
       ) : (
         <div>
-          <div className="row d-flex justify-content-start mx-5 align-items-center my-3">
-            <p className="col-4 text-muted mx-5 ps-5">
+          <div className="mx-auto d-sm-flex justify-content-between align-items-center my-3">
+            <p className="text-muted ps-5 my-auto">
               {moment(show_time).calendar()}
             </p>
             <Link
-              className="col-6"
+              className="mx-auto"
               to={{
                 pathname: "/payamount",
                 state: {
@@ -54,14 +54,14 @@ const SeatMap = ({ match }) => {
               }}
             >
               {seatsSelected.length !== 0 ? (
-                <button type="button" className="btn btn-success px-4">
+                <button type="button" className="btn btn-success">
                   Pay {seatsSelected.length * price} rupess,{" "}
                   {seatsSelected.length}X seats
                 </button>
               ) : null}
             </Link>
           </div>
-          <div className="seat-map w-100 overflow-auto">
+          <div className="seat-map w-100">
             <SeatsDisplay {...{ data, handleSelectSeat, seatsSelected }} />
             <p className="text-center mt-4"> All Eyes this Way please</p>
           </div>
