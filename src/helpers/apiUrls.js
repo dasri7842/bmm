@@ -1,4 +1,4 @@
-const API_ROOT = "http://localhost:8000/api";
+const API_ROOT = "https://bmm-drf.herokuapp.com/api";
 
 export const apiUrls = {
   allCities: () => `${API_ROOT}/cities/`,
