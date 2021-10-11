@@ -27,11 +27,11 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item my-auto">
+              {/* <li className="nav-item my-auto">
                 <NavLink className="nav-link" exact={true} to="/login">
                   <button className="btn btn-secondary">Login</button>
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

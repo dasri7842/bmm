@@ -11,7 +11,9 @@ const MoviePosterCard = (item) => {
         <h4>{item.title}</h4>
         <p className="m-0">Rating : {item.rating}</p>
         <p className="text-truncate m-0">Genres: {item.genres.join("/")}</p>
-        <p className="text-truncate m-0">Lang: {item.languages.join(", ")}</p>
+        <p className="text-truncate m-0">
+          Language: {item.languages.join(", ")}
+        </p>
       </div>
     </div>
   );

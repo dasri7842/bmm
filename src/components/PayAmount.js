@@ -20,8 +20,6 @@ const PayAmount = ({ location }) => {
 
   const { seats, price } = location.state;
 
-  console.log(location.state);
-
   const hanldeSubmit = (e) => {
     e.preventDefault();
     Setreq({ ...req, loading: true, errMsg: "" });

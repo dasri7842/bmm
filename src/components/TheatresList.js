@@ -4,6 +4,7 @@ import useGetData from "./../hooks/useGetData";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import EmptyTheatreList from "./moviesInCityComponents/EmptyTheatreList";
 
 const TheatresList = () => {
   useDocumentTitle("Theatres available");
@@ -26,13 +27,15 @@ const TheatresList = () => {
       ) : (
         <div>
           <FutureDates />
-          <h4 className="m-2">
+          <h4 className="m-2 mt-5">
             <span className="badge bg-success me-2">{data.length}</span>
             Theatres available
           </h4>
-          {data.map((item, indx) => (
-            <TheaterShows {...item} key={indx} />
-          ))}
+          {data.length === 0 ? (
+            <EmptyTheatreList />
+          ) : (
+            data.map((item, indx) => <TheaterShows {...item} key={indx} />)
+          )}
         </div>
       )}
     </div>
